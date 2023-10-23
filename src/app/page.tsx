@@ -11,7 +11,7 @@
 //   price: number;
 //   views: number;
 //  }
-  
+
 // }
 
 // export default async function Home() {
@@ -25,7 +25,7 @@
 //       <div className='w-[80%] flex flex-wrap justify-around my-10'>
 //       {
 //         cards.map((item : Card)=>(
-          
+
 //          <>
 //           <div className="mb-14 w-80 h-[410px] shadow-xl bg-white rounded-lg ring-3 ring-gray-100">
 //           <img id="img" src={`https://picsum.photos/seed/${Math.random()}/1000`} className="rounded-t-lg w-full h-44" alt="" />
@@ -47,7 +47,7 @@
 //           <p className="font-bold font-quicksand text-gray-500 text-sm my-3 "><span className="text-lg mr-2">&#9788;</span>{item.attributes.reviews} people viewing now</p>
 //         </div>
 //           </div>
-         
+
 //          </>
 //         ))
 //        }
@@ -84,11 +84,13 @@ const Home: React.FC = () => {
       try {
         const res = await fetch('https://shoppealtech-4qqi.onrender.com/api/samples');
         const data = await res.json();
-        setCards(data.data);
+        const sortedCards = data.data.sort((a:Card, b : Card) => a.id - b.id);
+        setCards(sortedCards);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
+
 
     fetchData();
   }, []); // Empty dependency array ensures the effect runs once after the initial render
@@ -97,7 +99,7 @@ const Home: React.FC = () => {
     <>
       <div className="w-full h-full bg-slate-50 flex justify-center">
         <div className='w-[80%] flex flex-wrap justify-around my-10'>
-          {cards.map((item) => (
+          {cards.map((item: Card) => (
             <div key={item.id} className="mb-14 w-80 h-[410px] shadow-xl bg-white rounded-lg ring-3 ring-gray-100">
               <img id="img" src={`https://picsum.photos/seed/${Math.random()}/1000`} className="rounded-t-lg w-full h-44" alt="" />
               <div className="p-6">
