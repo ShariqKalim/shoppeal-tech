@@ -27,7 +27,7 @@ export default async function Home() {
         cards.map((item : Card)=>(
           
          <>
-          <div key={item.id} className="mb-14 w-80 h-[410px] shadow-xl bg-white rounded-lg ring-3 ring-gray-100">
+          <div className="mb-14 w-80 h-[410px] shadow-xl bg-white rounded-lg ring-3 ring-gray-100">
           <img id="img" src={`https://picsum.photos/seed/${Math.random()}/1000`} className="rounded-t-lg w-full h-44" alt="" />
         <div className="p-6">
         <h1 className="text-gray-400 font-medium uppercase">{item.attributes.type}</h1>
